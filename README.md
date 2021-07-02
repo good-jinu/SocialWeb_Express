@@ -1,2 +1,6 @@
 # SocialWeb_Express
-nodejs, express, etc...
+website for social activity
+# Getting started
++ clone repo
++ npm install
++ npm start
