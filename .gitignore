@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Mysql user information
+mysqlUserObject.js
