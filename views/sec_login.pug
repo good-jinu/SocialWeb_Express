@@ -1,0 +1,22 @@
+section
+  form(action='/login_process', method='post')
+    label(for='ID')
+      |ID
+    input(
+      type='text'
+      placeholder='type ID'
+      name='ID'
+      required
+    )
+    |
+    label(for='PW')
+      |Password
+    input(
+      type='password'
+      placeholder='type password'
+      name='PW'
+      required
+    )
+    |
+    button(type='submit')
+      |Login

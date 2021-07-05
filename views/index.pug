@@ -5,4 +5,10 @@ block head_content
 
 block content
   include header.pug
-  include section.pug
+  case sec_con
+    when 'main'
+      include section.pug
+    when 'login'
+      include sec_login.pug
+    default
+      include section.pug

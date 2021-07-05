@@ -14,11 +14,13 @@ header {
   width: 100%;
   height: 90px;
   background-color: #0a052a;
+  text-align: center;
 }
 
 nav {
-  float:right;
-  margin-top: 40px;
+  display: inline-block;
+  width: 65%;
+  text-align: right;
 }
 
 section {
