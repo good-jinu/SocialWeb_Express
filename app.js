@@ -3,6 +3,33 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mysql = require('mysql');
+var session = require('express-session');
+var MYSQLStore = require('express-mysql-session')(session);
+
+var dbuserObj = require('./mysqlUserObject.js');
+var sessionOption = {
+  host: dbuserObj.host,
+  port: 3306,
+  user: dbuserObj.user,
+  password: dbuserObj.password,
+  database: "ForSession"
+}
+
+var sessionStore = new MYSQLStore(sessionOption);
+
+app.use(
+  session({
+    key: "myKey",
+    secrete: "mySecrete",
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false
+  })
+)
+
+var connection = mysql.createConnection(sessionOption);
+var sessionStore1 = new MYSQLStore({}, connection)
 
 var indexRouter = require('./routes/index');
 
