@@ -7,6 +7,8 @@ var mysql = require('mysql');
 var session = require('express-session');
 var MYSQLStore = require('express-mysql-session')(session);
 
+var app = express();
+
 var dbuserObj = require('./mysqlUserObject.js');
 var sessionOption = {
   host: dbuserObj.host,
@@ -14,26 +16,24 @@ var sessionOption = {
   user: dbuserObj.user,
   password: dbuserObj.password,
   database: "ForSession"
-}
+};
 
 var sessionStore = new MYSQLStore(sessionOption);
 
 app.use(
   session({
     key: "myKey",
-    secrete: "mySecrete",
+    secret: "mySecret",
     store: sessionStore,
     resave: false,
     saveUninitialized: false
   })
-)
+);
 
 var connection = mysql.createConnection(sessionOption);
-var sessionStore1 = new MYSQLStore({}, connection)
+var sessionStore1 = new MYSQLStore({}, connection);
 
 var indexRouter = require('./routes/index');
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

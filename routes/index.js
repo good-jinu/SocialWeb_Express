@@ -12,9 +12,20 @@ router.use('/login_process', login_p);
 router.use('/signup_process', signup_p);
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'MyWeb',
-    sec_con: 'main'}
-  );
+  if(req.session.userID==undefined || req.session.userID == null) {
+    res.render('index.pug', { title: 'website',
+      sec_con: 'main',
+      isLogin: false,
+      ID: ''
+    });
+  }
+  else {
+    res.render('index.pug', {title: 'website',
+      sec_con: 'main',
+      isLogin: true,
+      ID: req.session.userID
+    });
+  }
 });
 
 module.exports = router;

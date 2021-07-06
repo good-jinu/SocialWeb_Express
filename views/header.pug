@@ -3,5 +3,9 @@ header
     img.logo(src='/images/logo.png')
 
   nav
-    a(href='/login') Log in
-    a(href='/signup')Sign up
+    if isLogin
+      #my_ID= ID
+      a(href='/logout_process') Log out
+    else
+      a(href='/login') Log in
+      a(href='/signup') Sign up

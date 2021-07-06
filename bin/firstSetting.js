@@ -41,10 +41,10 @@ rl.on('line', (line)=>{
  rl.on('close', ()=> {
    fs.writeFile('mysqlUserObject.js',
      `const userInfo = {
-   host: ${mysqlLogin.host},
-   user: ${mysqlLogin.user},
-   password: ${mysqlLogin.password},
-   database: ${mysqlLogin.database}
+   host: '${mysqlLogin.host}',
+   user: '${mysqlLogin.user}',
+   password: '${mysqlLogin.password}',
+   database: '${mysqlLogin.database}'
  };
 
  module.exports = userInfo;

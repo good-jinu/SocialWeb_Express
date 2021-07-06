@@ -3,23 +3,35 @@ var router = express.Router();
 
 var mysql = require('mysql');
 const dbuserObj = require('../mysqlUserObject.js');
-var connection = mysql.createConnection(dbuserObj);
 
 router.post('/', function(req, res, next) {
-  connection.connect((err)=>{
-    if(err) throw err;
-  });
+  try {
+    var connection = mysql.createConnection(dbuserObj);
+    console.log(dbuserObj);
+    connection.connect((err)=>{
+      if(err) {
+	console.log('connect wrong');
+	throw err;
+      }
+    });
+    
+    var sql = "INSERT INTO users(user, password) VALUES (?, ?)"
 
-  var sql = "INSERT INTO users(user, password) VALUES (?, ?)"
+    connection.query(sql, [req.body.ID, req.body.PW], (err, result, field)=>{
+      if (err) {
+	console.log('query wrong');
+	throw err;
+      }
+    });
 
-  connection.query(sql, [req.body.ID, req.body.PW], (err, result, field)=>{
-    if (err) throw err;
-  });
+    connection.end();
 
-  connection.end();
-
-  res.redirect('/login');
-
+    res.redirect('/login');
+  }
+  catch (exception) {
+    console.log(exception);
+    console.log('something is wrong');
+  }
 });
 
 module.exports = router;
