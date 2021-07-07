@@ -10,17 +10,17 @@ router.post('/', function(req, res, next) {
     console.log(dbuserObj);
     connection.connect((err)=>{
       if(err) {
-	console.log('connect wrong');
-	throw err;
+        console.log('connect wrong');
+        throw err;
       }
     });
-    
+
     var sql = "INSERT INTO users(user, password) VALUES (?, ?)"
 
     connection.query(sql, [req.body.ID, req.body.PW], (err, result, field)=>{
       if (err) {
-	console.log('query wrong');
-	throw err;
+        console.log('query wrong');
+        throw err;
       }
     });
 

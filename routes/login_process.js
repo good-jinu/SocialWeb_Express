@@ -6,12 +6,6 @@ const dbuserObj = require('../mysqlUserObject.js');
 var connection = mysql.createConnection(dbuserObj);
 
 router.post('/', function(req, res, next) {
-  connection.connect((err)=>{
-    if(err) {
-      console.log('connet wrong');
-      throw err;
-    }
-  });
 
   var sql = "SELECT * FROM users WHERE user=? AND password=?"
 
@@ -23,8 +17,6 @@ router.post('/', function(req, res, next) {
       req.session.save(function(){});
     }
   });
-
-  connection.end();
 
   res.redirect('/');
 });
