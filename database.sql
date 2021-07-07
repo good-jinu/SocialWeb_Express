@@ -16,7 +16,6 @@ create table `contents` (
   `contentCode` int(11) not null,
   `title` varchar(50) not null,
   `main_content` text,
-  `uploadTime` timestamp not null,
   `user` varchar(25) not null,
   primary key(`contentCode`, `user`),
   foreign key (`user`) references `users`(`user`) on update CASCADE
