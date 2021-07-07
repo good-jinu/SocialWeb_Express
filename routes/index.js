@@ -6,12 +6,14 @@ const signup = require('./signup.js');
 const login_p = require('./login_process.js');
 const signup_p = require('./signup_process.js');
 const logout_p = require('./logout_process.js');
+const upload = require('./upload.js');
 
 router.use('/login', login);
 router.use('/signup', signup);
 router.use('/login_process', login_p);
 router.use('/signup_process', signup_p);
 router.use('/logout_process', logout_p);
+router.use('/upload', upload);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if(req.session.userID==undefined || req.session.userID == null) {

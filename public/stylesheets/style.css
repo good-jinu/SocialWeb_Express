@@ -31,3 +31,7 @@ img.logo {
   width: 100px;
   height: 79px;
 }
+
+nav > a {
+  padding-left: 10px;
+}
