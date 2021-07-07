@@ -15,10 +15,12 @@ router.post('/', function(req, res, next) {
     if(result[0]!=null){
       req.session.userID=result[0].user;
       req.session.save(function(){});
+      res.redirect('/');
+    }
+    else {
+      res.send("<script>alert('wrong ID or Password'); window.location.href='/login'</script>");
     }
   });
-
-  res.redirect('/');
 });
 
 module.exports = router;

@@ -16,7 +16,7 @@ var mysqlLogin = {
   password: '',
   database: 'SocialWeb'
 };
-var dbproperties = ['host', 'user', 'password', 'database'];
+var dbproperties = ['host', 'user', 'password'];
 
 rl.setPrompt('database information...\nhost: ');
 rl.prompt();
@@ -26,7 +26,7 @@ rl.on('line', (line)=>{
   mysqlLogin[dbproperties[inputIndex]]=line;
   console.log(mysqlLogin[dbproperties[inputIndex]]);
   inputIndex+=1;
-  if (inputIndex>3) {
+  if (inputIndex>2) {
     rl.close();
   } else {
     rl.setPrompt(`${dbproperties[inputIndex]}: `);
