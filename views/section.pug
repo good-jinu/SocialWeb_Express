@@ -1,2 +1,7 @@
 section
-  h1 Nothing posted!!
+  if main_contents[0]!=null
+    each val in main_contents
+      h1= val.title
+      h2= val.main_content
+  else
+    h1 Nothing posted

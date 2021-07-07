@@ -18,7 +18,8 @@ router.post('/', function(req, res, next) {
 
     connection.query(sql, [conIndex, req.body.title, req.body.content, req.session.userID], (err, result, field)=>{
       if(err) throw err;
-    })
+      res.redirect('/');
+    });
   });
 });
 
