@@ -15,7 +15,7 @@ var sessionOption = {
   port: 3306,
   user: dbuserObj.user,
   password: dbuserObj.password,
-  database: "ForSession"
+  database: dbuserObj.database
 };
 
 var sessionStore = new MYSQLStore(sessionOption);
@@ -26,7 +26,7 @@ app.use(
     secret: "mySecret",
     store: sessionStore,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true
   })
 );
 
